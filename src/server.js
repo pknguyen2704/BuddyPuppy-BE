@@ -6,7 +6,7 @@ import { APIs_V1 } from '~/routes/v1'
 import { env } from '~/config/environment'
 
 const app = express()
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(express.json())
 app.use('/v1', APIs_V1)
 
