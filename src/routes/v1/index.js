@@ -1,10 +1,19 @@
-import express from 'express'
-import { StatusCodes } from 'http-status-codes'
+import express from "express";
+import { StatusCodes } from "http-status-codes";
+import authRoutes from './authRoutes'
+import userRoutes from './userRoutes'
 
-const Router = express.Router()
+const Router = express.Router();
 
-Router.get('/status', (req, res) => {
-  res.status(StatusCodes.OK).json({message: 'APIs V1 are ready to use'})
-})
+// Test route
+Router.get("/status", (req, res) => {
+  res
+    .status(StatusCodes.OK)
+    .json({ message: "APIs V1 are ready to use" });
+});
 
-export const APIs_V1 = Router
+// Mount các route con
+Router.use("/auth", authRoutes);
+Router.use("/users", userRoutes);
+
+export const APIs_V1 = Router;
