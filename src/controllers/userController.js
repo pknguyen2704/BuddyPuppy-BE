@@ -33,7 +33,7 @@ export const promoteUser = async (req, res, next) => {
             user: updatedUser,
         });
     } catch (err) {
-        next(err); // để error middleware xử lý
+        next(err); 
     }
 };
 

@@ -8,7 +8,7 @@ export const authMiddleware = (req, res, next) => {
         if (!token) throw new ApiError(401, "Chưa đăng nhập");
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded; // { id, role }
+        req.user = decoded;
         next();
     } catch (err) {
         if (err.name === "JsonWebTokenError") {
@@ -17,7 +17,7 @@ export const authMiddleware = (req, res, next) => {
         if (err.name === "TokenExpiredError") {
             return next(new ApiError(401, "Token đã hết hạn"));
         }
-        next(err); // chuyển sang errorHandlingMiddleware
+        next(err);
     }
 };
 

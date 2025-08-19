@@ -45,7 +45,7 @@ export const login = async (req, res, next) => {
 
 export const logout = async (req, res, next) => {
     try {
-        // Nếu dùng refresh token thì xử lý xoá token ở DB/Redis
+        // Sẽ sử lí xóa token khi làm frontend sau
         res.status(StatusCodes.OK).json({ message: "Logged out successfully" });
     } catch (error) {
         next(error);
