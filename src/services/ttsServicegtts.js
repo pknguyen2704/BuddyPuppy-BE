@@ -11,7 +11,7 @@ export const ttsServiceGTTS = async (text, gender) => {
     tts.save(filePath, (err) => {
       if (err) return reject(err);
 
-      const pitch = gender === "male" ? "0.4" : "0.7"; 
+      const pitch = gender === "male" ? "0.607" : "0.7"; 
       const speed = 0.65;
       exec(
         `ffmpeg -y -i ${filePath} -filter:a "asetrate=44100*${pitch},atempo=${speed/pitch}" ${finalPath}`,
