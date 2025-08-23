@@ -3,6 +3,8 @@ import { StatusCodes } from "http-status-codes";
 import authRoutes from './authRoutes'
 import userRoutes from './userRoutes'
 import pecsRoutes from './pecsRoutes.js'
+import ttsRoutes from './ttsRoutes'
+
 
 const Router = express.Router();
 
@@ -17,5 +19,6 @@ Router.get("/status", (req, res) => {
 Router.use("/auth", authRoutes);
 Router.use("/users", userRoutes);
 Router.use("/pecs", pecsRoutes);
+Router.use("/textToSpeech", ttsRoutes);
 
 export const APIs_V1 = Router;

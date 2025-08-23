@@ -21,5 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-.env
+ 
+output_final.mp3
+output.mp3
