@@ -12,10 +12,14 @@ export const registerService = async (userData) => {
         guardian_Fullname, guardian_Gender, guardian_dateOfBirth, guardian_relation
     } = userData;
 
-    // Check trùng email
-    const existingUser = await User.findOne({ email });
+    // Check trùng Username
+    const existingUser = await User.findOne({ username });
     if (existingUser) {
-        throw new ApiError(StatusCodes.BAD_REQUEST, "Email already registered");
+        throw new ApiError(StatusCodes.CONFLICT, "Username already registered");
+    }
+    const existingUserEmail = await User.findOne({ email });
+    if (existingUserEmail) {
+        throw new ApiError(StatusCodes.CONFLICT, "Email already registered");
     }
 
     // Tạo user mới
