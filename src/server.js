@@ -14,9 +14,16 @@ app.use('/v1', APIs_V1)
 connectDB()
 
 app.use(errorHandlingMiddleware)
+
+// Health check
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Welcome to BuddyPuppy Backend API' })
 })
-app.listen(env.LOCAL_DEV_APP_PORT, env.LOCAL_DEV_APP_HOST, () => {
-  console.log(`Server is running on http://${env.LOCAL_DEV_APP_HOST}:${env.LOCAL_DEV_APP_PORT}`)
+
+// 👇 Chỗ quan trọng
+const HOST = process.env.HOST || '0.0.0.0'
+const PORT = process.env.PORT || env.LOCAL_DEV_APP_PORT || 3000
+
+app.listen(PORT, HOST, () => {
+  console.log(`🚀 Server is running on http://${HOST}:${PORT}`)
 })

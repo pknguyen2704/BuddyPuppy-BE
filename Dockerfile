@@ -1,16 +1,20 @@
-# build
-FROM node:18-alpine as build
+# Stage 1: Build
+FROM node:20-alpine AS build
+
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
-# nhận build-arg từ docker build
-ARG REACT_APP_API_URL
-ENV REACT_APP_API_URL=$REACT_APP_API_URL
 RUN npm run build
 
-# serve
-FROM nginx:alpine
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Stage 2: Run
+FROM node:20-alpine
+
+WORKDIR /app
+COPY --from=build /app /app
+
+# Chỉ định cổng Cloud Run sẽ expose
+ENV PORT=8080
+
+# Start app
+CMD ["node", "build/src/server.js"]
