@@ -39,3 +39,4 @@ jobs:
             --platform managed \
             --allow-unauthenticated \
             --set-env-vars MONGO_URI="${{ secrets.MONGO_URI }}"
+
