@@ -1,6 +1,7 @@
 
 import { StatusCodes } from "http-status-codes";
 import { getAllStoriesService } from "../services/SocialStoryService";
+
 export const getAllStories = async (req, res, next) => {
     try {
         const stories = await getAllStoriesService();

@@ -20,5 +20,5 @@ Router.use("/auth", authRoutes);
 Router.use("/users", userRoutes);
 Router.use("/pecs", pecsRoutes);
 Router.use("/textToSpeech", ttsRoutes);
-Router.use("/social-story", SocialStoryRoutes)
+Router.use("/social-stories", SocialStoryRoutes)
 export const APIs_V1 = Router;
