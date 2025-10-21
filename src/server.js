@@ -15,12 +15,12 @@ connectDB()
 
 app.use(errorHandlingMiddleware)
 
-// Health check
+
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Welcome to BuddyPuppy Backend API' })
 })
 
-// 👇 Chỗ quan trọng
+
 const HOST = process.env.HOST || '0.0.0.0'
 const PORT = process.env.PORT || env.LOCAL_DEV_APP_PORT || 3000
 

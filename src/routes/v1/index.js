@@ -4,7 +4,7 @@ import authRoutes from './authRoutes'
 import userRoutes from './userRoutes'
 import pecsRoutes from './pecsRoutes.js'
 import ttsRoutes from './ttsRoutes'
-
+import SocialStoryRoutes from './SocialStoryRoutes.js'
 
 const Router = express.Router();
 
@@ -20,5 +20,5 @@ Router.use("/auth", authRoutes);
 Router.use("/users", userRoutes);
 Router.use("/pecs", pecsRoutes);
 Router.use("/textToSpeech", ttsRoutes);
-
+Router.use("/social-story", SocialStoryRoutes)
 export const APIs_V1 = Router;
