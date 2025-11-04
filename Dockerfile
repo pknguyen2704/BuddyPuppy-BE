@@ -13,6 +13,8 @@ FROM node:22-alpine
 WORKDIR /app
 COPY --from=build /app /app
 
+RUN apk add --no-cache ffmpeg
+
 # Chỉ định cổng Cloud Run sẽ expose
 ENV PORT=8080
 
